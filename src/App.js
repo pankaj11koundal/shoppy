@@ -6,10 +6,10 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
 import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Area, Bar, Pie, Financial, ColorPicker, Line, ColorMapping, Editor } from './pages';
 import './App.css';
+import { UseStateContext } from './context/ContextProvider';
 
 const app = () => {
-    let activeMenu = true;
-
+    const { activeMenu } = UseStateContext();
   return (
     <div>
         <BrowserRouter>
@@ -23,16 +23,16 @@ const app = () => {
                 </div>
                 { activeMenu ? (
                     <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white'>
-                        Sidebar
+                        <Sidebar />
                     </div>
                 ) : (
                     <div className='w-0 dark:bg-secondary-dark-bg'>
-                        Sidebar 
+                        <Sidebar />
                     </div>
                 )}
                 <div className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'md:ml-72' : 'flex-2'}`}>
                     <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
-                        Navbar
+                        <Navbar />
                     </div>
                 </div>
 
@@ -49,20 +49,20 @@ const app = () => {
                         <Route path="/customers" element={<Customers />} />
 
                         {/* Apps */}
-                        <Routes path="/kanbar" element={<Kanban />} />
-                        <Routes path="/editor" element={<Editor />} />
-                        <Routes path="/calender" element={<Calendar />} />
-                        <Routes path="/color-picker" element={<ColorPicker />} />
+                        <Route path="/kanbar" element={<Kanban />} />
+                        <Route path="/editor" element={<Editor />} />
+                        <Route path="/calender" element={<Calendar />} />
+                        <Route path="/color-picker" element={<ColorPicker />} />
 
                         {/* Charts */}
-                        <Routes path="/line" element={<Line />} />
-                        <Routes path="/area" element={<Area />} />
-                        <Routes path="/bar" element={<Bar />} />
-                        <Routes path="/pie" element={<Pie />} />
-                        <Routes path="/financial" element={<Financial />} />
-                        <Routes path="/color-mapping" element={<ColorMapping />} />
-                        <Routes path="/pyramid" element={<Pyramid />} />
-                        <Routes path="/stacked" element={<Stacked />} />
+                        <Route path="/line" element={<Line />} />
+                        <Route path="/area" element={<Area />} />
+                        <Route path="/bar" element={<Bar />} />
+                        <Route path="/pie" element={<Pie />} />
+                        <Route path="/financial" element={<Financial />} />
+                        <Route path="/color-mapping" element={<ColorMapping />} />
+                        <Route path="/pyramid" element={<Pyramid />} />
+                        <Route path="/stacked" element={<Stacked />} />
                     </Routes>
                 </div>
             </div>
