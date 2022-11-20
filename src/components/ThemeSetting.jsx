@@ -33,8 +33,8 @@ const ThemeSetting = () => {
               name="theme"
               value="Light"
               classsName="cursor-pointer"
-              onChange={() => {}}
-              checked={true}
+              onChange={setMode}
+              checked={currentMode === 'Light'}
             />
             <label htmlFor="light" className='ml-2 text-md cursor-pointer'>
               Light
@@ -47,8 +47,8 @@ const ThemeSetting = () => {
               name="theme"
               value="Dark"
               classsName="cursor-pointer"
-              onChange={() => {}}
-              checked={true}
+              onChange={setMode}
+              checked={currentMode === 'Dark'}
             />
             <label htmlFor="dark" className='ml-2 text-md cursor-pointer'>
               Dark
@@ -66,9 +66,9 @@ const ThemeSetting = () => {
                     type="button"
                     className="h-10 w-10 rounded-full cursor-pointer"
                     style={{backgroundColor: item.color }}
-                    onClick={() => {}}
+                    onClick={() => setColor(item.color)}
                   >
-                    <BsCheck className={`ml-2 text-2xl text-white ${false ? 'block' : 'hidden' }`}/>
+                    <BsCheck className={`ml-2 text-2xl text-white ${item.color === currentColor ? 'block' : 'hidden' }`}/>
                   </button>
                 </div>
               </TooltipComponent>
