@@ -3,13 +3,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
-import { Navbar, Sidebar, ThemeSettings } from './components';
+import { Cart, Navbar, Sidebar, ThemeSettings } from './components';
 import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Area, Bar, Pie, Financial, ColorPicker, Line, ColorMapping, Editor } from './pages';
 import './App.css';
 import { UseStateContext } from './context/ContextProvider';
 
 const app = () => {
-    const { activeMenu, themeSettings, setThemeSettings, currentColor, currentMode } = UseStateContext();
+    const { activeMenu, themeSettings, setThemeSettings, currentColor, currentMode, initialState } = UseStateContext();
   return (
     <div className={currentMode === "Dark" ? 'dark' : ''}>
         <BrowserRouter>
@@ -39,7 +39,7 @@ const app = () => {
 
                 <div>
                     {themeSettings && <ThemeSettings />}
-
+                    {initialState.cart && <Cart/>}
                     <Routes>
                         {/* Dashboard */}
                         <Route path="/" element={<Ecommerce />} />
